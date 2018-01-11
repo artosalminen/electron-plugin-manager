@@ -1,0 +1,12 @@
+{
+  "name": "electron-plugin-example",
+  "version": "0.0.1",
+  "description": "Electron plugin example",
+  "main": "main.js",
+  "scripts": {
+    "start": "./node_modules/.bin/electron.cmd ."
+  },
+  "dependencies": {
+    "electron": "~1.7.9"
+  }
+}

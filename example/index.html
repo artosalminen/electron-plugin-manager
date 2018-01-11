@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Electron plugin example</title>
+  </head>
+  <body>
+    <h1>Electron plugin example</h1>
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+    We are using Node.js <script>document.write(process.versions.node)</script>,
+    Chromium <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.
+
+    <h4>Activate / Deactivate</h4>
+    <p>
+      <button onClick="installPlugin('camelcase')">Activate camelCase plugin</button>
+      <button onClick="installPlugin('reverse')">Activate reverse plugin</button>
+      <button onClick="installPlugin('morsify')">Activate morsify plugin</button>
+    </p>
+    <p>
+      <button onClick="deactivatePlugin('camelcase')">Deactivate camelCase plugin</button>
+      <button onClick="deactivatePlugin('reverse')">Deactivate reverse plugin</button>
+      <button onClick="deactivatePlugin('morsify')">Deactivate morsify plugin</button>
+    </p>
+
+    <p>
+      <input type="text" maxlength="50" id="textinput" value="Hello World" />
+      <button onClick="processText(document.getElementById('textinput').value)">Process text</button>
+    </p>
+
+    <pre id="progress" style="height: 250px; overflow-y: auto"></pre>
+
+    <script>
+        const renderer = require('./renderer.js')["default"];
+        function installPlugin(pluginName) {
+          renderer.installPlugin(pluginName)
+          .then(() => {
+            logInstalledPluginCount();
+          });
+        };
+        function deactivatePlugin(pluginName) {
+          renderer.deactivatePlugin(pluginName)
+          .then(() => {
+            logInstalledPluginCount();
+          });
+        };
+        function logInstalledPluginCount() {
+          renderer.logProcess(`${renderer.getPluginsCount()} plugins installed.`);
+        }
+        function processText(text) {
+          renderer.processText(text);
+        }
+      </script>
+
+  </body>
+</html>
