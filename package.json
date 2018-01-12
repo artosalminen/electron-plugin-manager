@@ -1,5 +1,5 @@
 {
-  "name": "electron-plugin-manager",
+  "name": "electron-npm-plugin-manager",
   "version": "0.1.0",
   "description": "Plugin manager to download and activate node packages at runtime.",
   "main": "index.js",

@@ -4,9 +4,37 @@
   "description": "Electron plugin example",
   "main": "main.js",
   "scripts": {
-    "start": "./node_modules/.bin/electron.cmd ."
+    "start": "./node_modules/.bin/electron.cmd .",
+    "electron:package": "electron-builder --dir",
+    "electron:release": "electron-builder"
   },
-  "dependencies": {
-    "electron": "~1.7.9"
+  "devDependencies": {
+    "electron": "~1.7.9",
+    "electron-builder": "^19.49.0",
+    "electron-builder-squirrel-windows": "^19.49.0"
+  },
+  "build": {
+    "appId": "org.as.electron-plugin-example",
+    "productName": "ElectronPluginExample",
+    "copyright": "ISC",
+    "files": [
+      "./*",
+      "./**/*"
+    ],
+    "asarUnpack": [
+      "./bin/**"
+    ],
+    "win": {
+      "target": [
+        "appx",
+        "7z",
+        "nsis"
+      ],
+      "icon": "./icon.ico"
+    },
+    "appx": {
+      "applicationId": "ElectronPluginExample",
+      "identityName": "ElectronPluginExample"
+    }
   }
 }
