@@ -2,6 +2,7 @@
 
 const path = require('path');
 const fs = require('fs');
+const appRoot = require('app-root-path');
 
 module.exports = {
   configureNpm
@@ -11,7 +12,7 @@ function configureNpm(appFolderName, location, npmEnv) {
   const isWin32 = /^win32/.test(process.platform);
   const isWin = /^win/.test(process.platform);
 
-  const npmExec = location || path.join(__dirname, '..', 'node_modules', '.bin', 'npm');
+  const npmExec = location || path.join(appRoot.path, 'node_modules', '.bin', 'npm');
 
   if (typeof npmEnv === 'undefined') {
     npmEnv = JSON.parse(JSON.stringify(process.env));
@@ -33,5 +34,5 @@ function configureNpm(appFolderName, location, npmEnv) {
   if(fs.existsSync(npmExec)) {
     return Promise.resolve((returnValue));
   }
-  throw new Error(`Npm not found. Try to install packages with 'npm install'.`);
+  throw new Error(`Npm not found from ${npmExec}. Try to install packages with 'npm install'.`);
 }

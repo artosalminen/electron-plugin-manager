@@ -2,15 +2,19 @@
   "name": "electron-plugin-example",
   "version": "0.0.1",
   "description": "Electron plugin example",
+  "author": "asalminen",
   "main": "main.js",
   "scripts": {
     "start": "./node_modules/.bin/electron.cmd .",
     "electron:package": "electron-builder --dir",
     "electron:release": "electron-builder"
   },
+  "dependencies": {
+    "electron-npm-plugin-manager": "^0.1.2"
+  },
   "devDependencies": {
     "electron": "~1.7.9",
-    "electron-builder": "^19.49.0",
+    "electron-builder": "^19.53.4",
     "electron-builder-squirrel-windows": "^19.49.0"
   },
   "build": {
@@ -19,10 +23,8 @@
     "copyright": "ISC",
     "files": [
       "./*",
-      "./**/*"
-    ],
-    "asarUnpack": [
-      "./bin/**"
+      "./**/*",
+      "./node_modules/.bin/*"
     ],
     "win": {
       "target": [

@@ -1,6 +1,6 @@
 {
   "name": "electron-npm-plugin-manager",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Plugin manager to download and activate node packages at runtime.",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/artosalminen/electron-plugin-manager#readme",
   "dependencies": {
-    "npm": "^5.6.0"
+    "npm": "^5.6.0",
+    "app-root-path": "^2.0.1"
   }
 }

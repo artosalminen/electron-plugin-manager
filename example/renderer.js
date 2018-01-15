@@ -5,7 +5,7 @@
 'use strict';
 
 const path = require('path');
-const pluginManager = require('../index.js');
+const pluginManager = require('electron-npm-plugin-manager');
 
 const pluginsPrefix = './plugins/';
 let installedPlugins = [];
